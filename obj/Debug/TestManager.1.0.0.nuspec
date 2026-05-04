@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>TestManager</id>
+    <version>1.0.0</version>
+    <authors>TestManager</authors>
+    <description>Package Description</description>
+    <repository type="git" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="ExcelDataReader" version="3.8.0" exclude="Build,Analyzers" />
+        <dependency id="ExcelDataReader.DataSet" version="3.8.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Data.Sqlite" version="10.0.6" exclude="Build,Analyzers" />
+        <dependency id="SSH.NET" version="2025.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Encoding.CodePages" version="10.0.5" exclude="Build,Analyzers" />
+        <dependency id="System.Text.Json" version="10.0.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\TestManagerVS\TestManager\bin\Debug\net472\TestManager.exe" target="lib\net472\TestManager.exe" />
+  </files>
+</package>

@@ -1,0 +1,48 @@
+﻿<Window x:Class="TestManager.Views.ConnectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Connection"
+        Width="400"
+        Height="300"
+        Icon="/Views/logo mini.png"
+        Background="#FFE7E9F8">
+
+    <StackPanel Margin="10,10,10,11">
+
+        <Grid Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="IP:" VerticalAlignment="Center" Foreground="#FF091B41"/>
+            <TextBox Grid.Column="1" Text="{Binding IP, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1,1,1,1" ClipToBounds="True" BorderBrush="#FF091B41"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Role:" VerticalAlignment="Center" Foreground="#FF091B41"/>
+            <TextBox Grid.Column="1" Text="{Binding Role, UpdateSourceTrigger=PropertyChanged}" BorderBrush="#FF091B41"/>
+        </Grid>
+
+        <Grid Margin="0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Password:" VerticalAlignment="Center" Foreground="#FF091B41"/>
+            <TextBox Grid.Column="1" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" BorderBrush="#FF091B41"/>
+        </Grid>
+
+        <Button Content="Connect"
+                Margin="0,15"
+                Command="{Binding ConnectCommand}" Background="#FFEB075E" Foreground="#FF091B41" BorderBrush="#FF091B41" Width="377" />
+
+        <TextBlock Text="{Binding Status}" Foreground="#FFEB075E"/>
+    </StackPanel>
+</Window>

@@ -1,0 +1,81 @@
+{
+  "str_valid": [
+    "test",
+    "test",
+    "testtesttest",
+    "test12345",
+    "тесттесттест",
+    "тест12345",
+    "123456789",
+    "a.b.c.d.e.f.g",
+    "TESTCAPSTESTCAPS"
+  ],
+  "str_invalid": [
+    "thisisaverylongstringmorethanthirtytwochars",
+    "строкасдлинойбольшетридцатидвухсимволоввней",
+    "test!test",
+    "test@test",
+    "test#test",
+    "test$test",
+    "test%test",
+    "test^test",
+    "test&test",
+    "test*test",
+    "test=test",
+    "test+test",
+    "test(test",
+    "test)test",
+    "test[test",
+    "test]test",
+    "test{test",
+    "test}test",
+    "test;test",
+    "test:test",
+    "test”test",
+    "test'test",
+    "test\\test",
+    "test|test",
+    "test/test",
+    "question?",
+    "data,comma",
+    "tilde~wave",
+    "angle<test",
+    "angle>test",
+    "back`tick",
+    "single’quote",
+    "line\rbreak",
+    "line\nbreak",
+    "tab\there"
+  ],
+  "ips_valid": [
+    "192.168.1.1",
+    "10.0.0.254",
+    "172.16.0.100"
+  ],
+  "ips_invalid": [
+    "999.999.999.999",
+    "192.168.1",
+    "abc",
+    "256.0.0.1"
+  ],
+  "time_valid": [
+    "08:00",
+    "11:55",
+    "00:00",
+    "24:00"
+  ],
+  "time_invalid": [
+    "25:00",
+    "60:60",
+    "080:000",
+    "-04:00",
+    "ab:ab",
+    "0:0",
+    "25:60",
+    "8:00",
+    "08:0"
+  ],
+  "UseDelayedStart": false,
+  "StartTime": "00:00",
+  "RunCount": 1
+}

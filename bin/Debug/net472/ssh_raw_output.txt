@@ -1,0 +1,41 @@
+system switch show
+
+
+ _____  _____         _   _       ____  ______        __
+|_   _|  ___|__  _ __| |_(_)___  |  _ \/ ___\ \      / /
+  | | | |_ / _ \| '__| __| / __| | |_) \___ \\ \ /\ / /
+  | | |  _| (_) | |  | |_| \__ \ |  __/ ___) |\ V  V /
+  |_| |_|  \___/|_|   \__|_|___/ |_|   |____/  \_/\_/
+  Fort-telecom,  fort-telecom.ru
+  TFortis,       tfortis.ru
+
+* WARNING: Authorised Access Only
+
+        
+version:          - 
+access level      - admin
+show access level - admin
+Switch#system switch show
+ -------------------------------------------------------------- 
+System Info:
+	Model:             	PSW+UPS-Box 8x2Pro
+	Host name:         	TFortis
+	Firmware Version:  	1.0.1
+	Description:       	----- not set -------
+	Contact:           	8(800)100-112-8 support@tfortis.ru
+	Location:          	----- not set -------
+Time Info:
+	Time zone:         		-5
+	System Time:       		17 February 2026 14:17:24
+	System Uptime:     		0 days and 4:36:7 (HH:MM:SS)
+ -------------------------------------------------- 
+Interface:	Mngt
+	device:            	switch.1
+	proto:             	static
+	ip address:        	
+			192.168.0.32/24
+
+MAC Address:       			C0:11:A6:20:00:20
+Vlan ID:             		1
+ -------------------------------------------------------------- 
+Switch#

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="TestManager.Views.Pages.InfoView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel>
+
+        <TextBlock Text="Switch information:"
+                   FontSize="30"
+                   FontWeight="Bold" Foreground="#FF091B41"/>
+
+        <!--<TextBlock Text="{Binding Switch.Ip, StringFormat='IP: {0}'}" Foreground="#FF091B41" FontSize="20"/>
+        <TextBlock Text="{Binding Switch.MAC, StringFormat='MAC: {0}'}" Foreground="#FF091B41" FontSize="20"/>
+        <TextBlock Text="{Binding Switch.Model, StringFormat='Model: {0}'}" Foreground="#FF091B41" FontSize="20"/>
+        <TextBlock Text="{Binding Switch.FirmwareVersion, StringFormat='Firmware Version: {0}'}" Foreground="#FF091B41" FontSize="20"/>
+        <TextBlock Text="{Binding Switch.HostName, StringFormat='Host: {0}'}" Foreground="#FF091B41" FontSize="20"/>
+        <TextBlock Text="{Binding Switch.SystemTime, StringFormat='Time: {0}'}" Foreground="#FF091B41" FontSize="20"/> -->
+        <TextBlock FontSize="20">
+    <Run Text="IP: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.Ip}" Foreground="#FF091B41"/>
+</TextBlock>
+
+<TextBlock FontSize="20">
+    <Run Text="MAC: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.MAC}" Foreground="#FF091B41"/>
+</TextBlock>
+
+<TextBlock FontSize="20">
+    <Run Text="Model: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.Model}" Foreground="#FF091B41"/>
+</TextBlock>
+
+<TextBlock FontSize="20">
+    <Run Text="Firmware: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.FirmwareVersion}" Foreground="#FF091B41"/>
+</TextBlock>
+
+<TextBlock FontSize="20">
+    <Run Text="Hostname: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.HostName}" Foreground="#FF091B41"/>
+</TextBlock>
+
+<TextBlock FontSize="20">
+    <Run Text="System time: " Foreground="#FFEB075E"/>
+    <Run Text="{Binding Switch.SystemTime}" Foreground="#FF091B41"/>
+</TextBlock>
+        
+
+    </StackPanel>
+
+</UserControl>
