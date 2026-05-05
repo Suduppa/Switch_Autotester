@@ -65,6 +65,9 @@ class DataManager:
                     adjusted_width = min(max_length + 2, 50) # Ограничим до 50, чтобы не было слишком широко
                     sheet.column_dimensions[column].width = adjusted_width
 
+            if len(self.wb.sheetnames) == 0:
+                self.wb.create_sheet("Empty_Report")
+
             try:
                 await asyncio.to_thread(self.wb.save, self.excel_name)
                 print(f"✓ Отчет сохранен: {self.excel_name}")

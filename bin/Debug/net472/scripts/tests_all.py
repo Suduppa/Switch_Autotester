@@ -63,8 +63,8 @@ def vlan_name_test():
         cmds += [(f"network vlan config vlanid {vid} name {v}", v) for v in str_valid]
         cmds.append(f"# VLAN {vid} — невалидные имена (ошибки ожидаемы)")
         cmds += [(f"network vlan config vlanid {vid} name {v}", v) for v in str_invalid]
-    return cmds
     cmds.append("changes revert")
+    return cmds
 
 @register_test("ssh__UsIn__changes__revert")
 def changes_revert_config_type():
@@ -155,8 +155,9 @@ def test_sntp_config():
     for val in str_invalid:
         cmds += [(f"services sntp config add host_name {val}", val)]
         #f"services sntp config delete host_name {val}",
-    return cmds
+    
     cmds.append("changes revert")
+    return cmds
 
 # TFDM не проходят тесты
 @register_test("ssh__UsIn__tfdm__config")
@@ -198,6 +199,8 @@ def test_system_description():
     for field in fields:
         for val in str_invalid:
             cmds.append((f"system description config {field} {val}", val))
+    
+    cmds.append("changes revert")        
     return cmds
 
 # System log
@@ -279,6 +282,7 @@ def test_autorestart():
         cmds += [
             f"",
         ]
+    return cmds
 
 #SNMP
 @register_test("snmp__check")

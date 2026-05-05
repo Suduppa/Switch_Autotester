@@ -164,23 +164,26 @@ namespace TestManager.ViewModels
 
         private void AddColoredLog(string text, string forceColor = null)
         {
-            if (forceColor != null) { _logsViewModel.AddLog(text, forceColor); return; }
-
-            string color = "#FF091B41"; // Базовый цвет (темно-синий)
+            string color = "#FF091B41";
             string lower = text.ToLower();
 
-            if (lower.Contains("ошибка") || lower.Contains("error") || lower.Contains("failed") || lower.Contains("таймаут"))
-                color = "#E53935"; // Красный
+            if (forceColor != null) { color = forceColor; }
+            else if (lower.Contains("ошибка") || lower.Contains("error") || lower.Contains("failed") || lower.Contains("таймаут") || lower.Contains("traceback"))
+                color = "#E53935";
             else if (lower.Contains("успех") || lower.Contains("success") || text.Contains("✓"))
-                color = "#43A047"; // Зеленый
+                color = "#43A047";
             else if (lower.Contains("предупреждение") || lower.Contains("warning"))
-                color = "#FB8C00"; // Оранжевый
+                color = "#FB8C00";
             else if (text.StartsWith("→") || text.StartsWith(">>>"))
-                color = "#00ACC1"; // Бирюзовый (информация о команде)
+                color = "#00ACC1";
             else if (text.StartsWith("#"))
-                color = "#8E24AA"; // Фиолетовый (комментарии)
+                color = "#8E24AA";
 
-            _logsViewModel.AddLog(text, color);
+            string protocol = "SSH";
+            if (text.Contains("[WEB]") || text.Contains("web_sender")) protocol = "WEB";
+            else if (text.Contains("[SNMP]") || text.Contains("snmp_sender")) protocol = "SNMP";
+
+            _logsViewModel.AddLog(protocol, text, color);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

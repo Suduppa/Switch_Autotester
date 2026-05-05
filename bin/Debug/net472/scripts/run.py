@@ -45,12 +45,6 @@ def run_ssh_blocks(test_data, ip, user, password, sheet_name):
             test_index += len([c for c in cmds_list if not c.startswith("#")])
             
         elif isinstance(block, str):
-            if block.startswith("SLEEP_"): #Для слипа
-                seconds = int(block.split("_")[1])
-                print(f"[*] Коммутатор ушел в ребут. Ждем {seconds} секунд...")
-                import time
-                time.sleep(seconds)
-                continue
             ssh_sender.send_command(ip, user, password, "Switch#", block, sheet_name, test_index)
             if not block.startswith("#"):
                 test_index += 1
@@ -78,6 +72,7 @@ async def execute_test_suite(test_names, ip, user, password, community, repeats=
                 print(f"\n>>> ИТЕРАЦИЯ {i+1} из {repeats} <<<\n")
             
             tasks = []
+            ssh_tests_queue = {} # Очередь для последовательного запуска SSH
             
             for test_name, test_data in commands_by_test.items():
                 sheet_name = f"{test_name}_R{i+1}" if repeats > 1 else test_name
@@ -88,16 +83,28 @@ async def execute_test_suite(test_names, ip, user, password, community, repeats=
                     print(f"[Подготовка] SNMP тест: {test_name}")
                     tasks.append(asyncio.to_thread(snmp_sender.get_snmp_values, ip, community, oids, sheet_name, 1))
                     
-                # SSH
-                elif isinstance(test_data, list):
-                    print(f"[Подготовка] SSH тест: {test_name}")
-                    tasks.append(asyncio.to_thread(run_ssh_blocks, test_data, ip, user, password, sheet_name))
                 # WEB
                 elif isinstance(test_data, dict) and test_data.get("type") == "web":
                     print(f"[Подготовка] WEB тест: {test_name}")
                     tasks.append(web_sender.run_web_test(ip, user, password, test_name, sheet_name))
+                
+                # SSH (добавляем в очередь, а не запускаем сразу)
+                elif isinstance(test_data, list):
+                    ssh_tests_queue[sheet_name] = test_data
                 else:
                     print(f"\n[Ошибка] Неизвестный формат данных для теста {test_name}")
+
+            # Формируем одну задачу для всех SSH-тестов, чтобы они шли друг за другом
+            if ssh_tests_queue:
+                def run_all_ssh():
+                    for s_name, data in ssh_tests_queue.items():
+                        print(f"[Подготовка] SSH тест: {s_name}")
+                        run_ssh_blocks(data, ip, user, password, s_name)
+                    
+                    # Закрываем сессию только после завершения всех SSH тестов
+                    ssh_sender.manager.disconnect()
+
+                tasks.append(asyncio.to_thread(run_all_ssh))
 
             print("\nЗапуск тестов в параллельном асинхронном режиме...")
             await asyncio.gather(*tasks)
